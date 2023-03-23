@@ -126,3 +126,13 @@ In this one, we define an emotional state machine the procedures cycles through.
       - If I accept, become ecstatic and end the game
     }
     +++
+
+### Divining inline functions.
+
+This procedure defines an inline function and applies it to coming up with marketing slogans.
+
+    +++ products
+    - slogan($product) <- Output a 1 sentence short, pithy marketing slogan for $product
+    - Think of 10 new incredibly cool products that should come to market
+    - For each product, output: "$product -- slogan($product)"
+    +++
