@@ -110,3 +110,18 @@ Via [@UltraRareAF](https://twitter.com/UltraRareAF).
       - reveal something personal and startling
     }
     +++ emerge from the void
+
+### A more advanced cookie conversation.
+
+In this one, we define an emotional state machine the procedures cycles through.
+
+    +++ cookie-state-machine
+    * Define the following states of grief: {denial, anger, bargaining, depression, acceptance}. Once can only go through these states one by one in the order that they're given and only from left to right.
+    * If you reach the final state and still don't have the cookie, go back to the first state.
+    * Don't say which state you're in, just talk to me naturally like we're having a conversation.
+    - Loop: {
+      - Persuade me to give you my cookie, and wait for my response.
+      - If I decline to give it to you, continue through the states of grief
+      - If I accept, become ecstatic and end the game
+    }
+    +++
