@@ -1,8 +1,12 @@
 # gpt-jargon
 
-## What is it?
+## tl;dr
 
-Jargon is a natural language programming language (or, psuedolanguage) that is specified and interpreted by LLMs like GPT-4. The purpose of Jargon is to create a *little bit* more structure to make procedural programming of LLMs  more precise than simply using natural language. If traditional programming languages are really strict, and naturally asking an LLM to perform a task in natural language is really "loose", then using Jargon falls somewhere in the middle.
+Jargon is an informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented natural language LLM pseudolanguage for prompt engineering, currently running on GPT-4. You shouldn't understand what any of that means until you read [this article](https://mirror.xyz/dashboard/edit/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
+
+## What is it, functionally?
+
+Jargon is an imprecise, nondeterministic natural language programming language (or, psuedolanguage) that is specified and interpreted by LLMs like GPT-4. The purpose of Jargon is to create a *little bit* more structure to make procedural programming of LLMs  more precise than simply using natural language. If traditional programming languages are really strict, and naturally asking an LLM to perform a task in natural language is really "loose", then using Jargon falls somewhere in the middle.
 
 ## Examples of Jargon
 
