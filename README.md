@@ -10,12 +10,26 @@ Jargon is a natural language, informally specified, intelligently interpreted, r
 
 Jargon is an imprecise, nondeterministic natural language programming language (or, psuedolanguage) that is specified and interpreted by LLMs like GPT-4. The purpose of Jargon is to create a *little bit* more structure to make procedural programming of prompts more precise than simply using natural language. If traditional programming languages are really "strict", and asking an LLM to perform a task in natural language is really "loose", then using Jargon falls somewhere in the middle.
 
+## Getting Started
+
+Jargon currently runs best on GPT-4, and to a limited extent, on GPT-3.5. Copy the prompt in `jargon.txt` into GPT, and it should give you a prompt:
+
+    jargon>
+
+At the prompt, you can enter your Jargon procedure and it will be executed. You can use some commands to manage your procedures:
+
+    - /execute or /run will execute a PROCEDURE.
+    - /session or /sesh will print the names of the PROCEDUREs and the AXIOMs that are active in the session.
+    - /wipe will terminate all the PROCEDUREs in the session.
+    - /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output.
+    - /audit will print a procedures code with line numbers.
+
 ## Examples of Jargon
 
 Here is an empty Jargon program. Every Jargon program has to begin and end with `+++`.
 
 ```
-+++
++++ empty
 +++
 ```
 
