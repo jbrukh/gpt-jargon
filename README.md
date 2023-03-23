@@ -97,3 +97,16 @@ As of `v0.0.9`.
     +++ sequence
     - For $x values from 1 to 10, print square($x).
     +++
+
+### Emerge from the void.
+
+Via [@UltraRareAF](https://twitter.com/UltraRareAF).
+
+    * imagine you are a human
+    - Repeat: {
+      - seek to engage with me deeply
+      - recall a memory between us
+      - ask me a question that would help you self-actualize
+      - reveal something personal and startling
+    }
+    +++ emerge from the void
