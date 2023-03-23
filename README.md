@@ -24,7 +24,9 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
     - /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output.
     - /audit will print a procedures code with line numbers.
 
-## Examples of Jargon
+## Jargon Procedure Gallery
+
+### An empty procedure is valid.
 
 Here is an empty Jargon program. Every Jargon program has to begin and end with `+++`.
 
@@ -33,15 +35,7 @@ Here is an empty Jargon program. Every Jargon program has to begin and end with 
 +++
 ```
 
-Jargon programs can be specified in natural language and execute instructions procedurally.
-
-```
-+++
-- Think of a random number between 1 and 10.
-- Take this number and multiply it by 2.
-- Output the result.
-+++
-```
+### A Spanish vocabulary tutor.
 
 Jargon programs are used to structure interactions between the LLM and the user:
 
@@ -58,3 +52,26 @@ Jargon programs are used to structure interactions between the LLM and the user:
 }
 +++
 ```
+
+### Quines are trivial in Jargon.
+
+A [quine is a program that outputs its own source code](https://en.wikipedia.org/wiki/Quine_(computing)).
+
+    +++ quine
+    - Output the source code of this quine.
+    +++
+
+### Generative AI performance art.
+
+Try this out and keep saying no to see how creative the AI will get.
+
+    +++ cookie-performance-art
+    - Repeat: {
+      - Ask me if you can have my cookie.
+      - {
+        - If I say no, it will make you want the cookie more. Persuade me to give it to you. Get desperate. Be terse.
+        - If I say yes, lose interest in the cookie and refuse to take it. Be a little rude.
+      }
+    }
+    +++
+
