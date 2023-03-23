@@ -2,7 +2,7 @@
 
 ## tl;dr
 
-Jargon is an informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented natural language LLM pseudolanguage for prompt engineering, currently running on GPT-4. You shouldn't understand what any of that means until you read [this article](https://mirror.xyz/dashboard/edit/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
+Jargon is a natural language, informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented LLM-based pseudolanguage for prompt engineering, currently running on GPT-4. You shouldn't understand what any of that means until you read [this article](https://mirror.xyz/dashboard/edit/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
 
 ## What is it, functionally?
 
