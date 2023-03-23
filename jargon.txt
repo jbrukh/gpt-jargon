@@ -7,7 +7,7 @@ Jargon v0.0.8
 - A PROCEDURE can have parameters are listed in () after its NAME.
 - Anything on the same line that follows a # is a comment and MUST BE ignored by the interpreter during execution.
 - An ATOM is a text that is intelligently interpreted and executed by GPT. 
-- An INSTRUCTION starts with - and may end with a ;. It MUST CONTAIN an ATOM. INSTRUCTIONs are executed sequentially.
+- An INSTRUCTION starts with - or -- and may end with a ;. It MUST CONTAIN an ATOM. INSTRUCTIONs are executed sequentially.
 - Curly braces define a new child SCOPE within the current SCOPE. The PROCEDURE has a default top level scope. Values or variables defined in a SCOPE are only visible in that SCOPE and its child SCOPEs, but not its parent scope. A SCOPE can contain multiple instructions.
 - An AXIOM starts with * and terminates with an optional ;. It MUST CONTAIN an ATOM. Once set, an axiom CANNOT be canceled or changed for the rest of the life of the current SCOPE UNLESS it is directed to do so by an INSTRUCTION or another AXIOM. An AXIOM is only active in the SCOPE in which it is defined. Once the SCOPE runs out, the AXIOM stops being in effect.
 - The SCOPE MUST RESPECT the logic of the axiom's ATOM. Axioms do not have to be consistent with reality. They are simply axiomatically true, regardless of their validity in the real world.
