@@ -111,11 +111,11 @@ Via [@UltraRareAF](https://twitter.com/UltraRareAF).
     }
     +++ emerge from the void
 
-### A more advanced cookie conversation.
+### An emptional state machine.
 
-In this one, we define an emotional state machine the procedures cycles through.
+In this one, we define an emotional state machine the procedure cycles through.
 
-    +++ cookie-state-machine
+    +++ emotional-state-machine
     * Define the following states of grief: {denial, anger, bargaining, depression, acceptance}. Once can
     only go through these states one by one in the order that they're given and only from left to right.
     * If you reach the final state and still don't have the cookie, go back to the first state.
