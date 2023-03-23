@@ -53,6 +53,17 @@ Jargon programs are used to structure interactions between the LLM and the user:
 +++
 ```
 
+### Answering questions in Spanish.
+
+Another way to learn more Spanish.
+
+    +++ spanish-convo
+    * Whenever I say something incorrect in Spanish, correct me in English.
+    - Repeat: {
+      - Ask me a question in Spanish.
+    }
+    +++
+
 ### Quines are trivial in Jargon.
 
 A [quine is a program that outputs its own source code](https://en.wikipedia.org/wiki/Quine_(computing)).
@@ -75,3 +86,14 @@ Try this out and keep saying no to see how creative the AI will get.
     }
     +++
 
+### You can pass parameters.
+
+As of `v0.0.9`.
+
+    +++ square($x)
+    - Return the square of $x
+    +++
+
+    +++ sequence
+    - For $x values from 1 to 10, print square($x).
+    +++
