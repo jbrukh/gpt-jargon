@@ -41,7 +41,7 @@ This PROCEDURE executes three INSTRUCTIONs sequentially:
 
 +++ sequence
 - Output 1
-- Outout A
+- Output A
 - Output &
 +++
 
