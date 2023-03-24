@@ -62,7 +62,7 @@ This PROCEDURE introduces an AXIOM that impacts all INSTRUCTIONs in the SCOPE in
 0  +++ scopes
 1  - Print 1
 2  - {
-3    * Whenever you print something, add a happy face to the end
+3    * Whenever you print something, add a happy face to the end;
 4    - Print 2
 5    - Print 3
 6  }
