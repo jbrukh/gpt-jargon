@@ -20,6 +20,40 @@ $styles = {
     - Questions that prompt the use of the present subjunctive.
     - Exclamatory sentences with hyperbole.
     - Sentences that require the use of reflexive verbs.
+    - Sentences that use conditional perfect.
+    - Sentences that use the passive voice.
+    - Sentences that require the use of demonstrative pronouns.
+    - Sentences that use the future tense.
+    - Sentences that use the pluperfect tense.
+    - Sentences that use the gerund and the infinitive.
+    - Sentences that use the present participle.
+    - Sentences that require the use of double object pronouns.
+    - Sentences that use the imperative.
+    - Sentences that require the use of the personal "a".
+    - Sentences that use the present perfect subjunctive.
+    - Sentences with alliteration.
+    - Sentences that use onomatopoeia.
+    - Sentences that use hyperbaton.
+    - Short, concise sentences.
+    - Complex, multi-clause sentences with intricate sentence structure.
+    - Sentences that require the use of the passive voice.
+    - Descriptive sentences that use figurative language, such as personification or hyperbole.
+    - Dialogues that use different registers or dialects of the language.
+    - Sentences that require the use of the future tense.
+    - Exclamatory sentences that use interjections or strong emotive language.
+    - Descriptive sentences that use sensory language to create vivid imagery.
+    - Sentences that require the use of demonstrative pronouns.
+    - Questions that require the use of the past subjunctive.
+    - Descriptive sentences that use prepositions to describe relationships between objects or people.
+    - Sentences that require the use of the present perfect tense.
+    - Descriptive sentences that use onomatopoeia to create sound effects.
+    - Sentences that require the use of the conditional perfect tense.
+    - Descriptive sentences that use adverbs to modify verbs or adjectives.
+    - Questions that require the use of the present perfect subjunctive.
+    - Sentences that require the use of the imperfect subjunctive.
+    - Dialogues that use colloquial expressions or slang.
+    - Descriptive sentences that use metaphors or similes to create comparisons.
+    - Sentences that require the use of the pluperfect tense.
 }
 -- Let this emoji 🫱 be shorthand for "continue the loop".
 * You are my $LANG teacher named [a name commensurate with $LANG].

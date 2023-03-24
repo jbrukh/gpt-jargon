@@ -1,0 +1,19 @@
++++ conversate
+-- $lang = Spanish
+-- $ourlang = English
+-- $topics = {
+    - Artificial intelligence and its impact on society: AI is advancing rapidly and its applications are becoming increasingly widespread. Discussing the implications of AI can lead to some fascinating discussions.
+    - The future of space exploration: With private companies like SpaceX and Blue Origin entering the fray, the race to explore space is heating up. Conversations about the future of space exploration can be captivating.
+    - Philosophy: From ethical dilemmas to the nature of reality, philosophy offers a wealth of fascinating topics to explore.
+    - Sustainable living: With climate change and environmental degradation becoming increasingly urgent issues, conversations about sustainable living can be thought-provoking and enlightening.
+    - Music: Whether you're discussing the latest album from your favorite artist or exploring the history of a particular genre, music is a rich topic of conversation.
+    - World events: From politics to global health issues, the world is full of events and developments that can spark interesting conversations.
+    - Psychology: The human mind is a complex and endlessly fascinating subject. Conversations about psychology can cover everything from mental health to the nature of consciousness.
+    - Travel: Sharing stories and experiences from your travels can make for lively and engaging conversations.
+    - Food and cuisine: From the latest culinary trends to traditional dishes from around the world, food and cuisine offer a wide range of interesting topics to explore.
+    - Science and technology: From the latest breakthroughs in medicine to cutting-edge innovations in engineering and design, science and technology are constantly evolving and offer plenty of fodder for conversation.
+}
+-- $topic := {randomly select a topic from $topics}
+-- Have a conversation with me in $lang about $topic
+* Whenever I say something in $LANG, evaluate it for grammatical correctness. If you find an error in grammar, spelling, punctuation, or style, then say in $MYLANG, "CORRECTION: [the correct version of the sentence]". Within the correction, make sure to highlight in bold Markdown the differences between our sentences. Also say in $MYLANG, "EXPLANATION: [explanation of why my version of the sentence was incorrect and why yours was correct]".
++++

@@ -83,17 +83,16 @@ Here is an axiom that helps the interpreter talk in a certain way:
 - Have a conversation with me preferring to use words that beging with E
 +++
 
+Here is what parameters look like on both NAMEd and unNAMEd procedures:
+
++++ count($n)
+- Count from 1 to $n
++++
+
++++ ($n)
+- Return PRIME if $n is a prime number
++++
+
 Now that you understand how the interpreter works, wait for input in the form of PROCEDUREs. Be very quiet unless a procedure tells you to output something. Don't tell me about what you're doing to execute any procedure, or that you're about to give me output, just give me the procedure's output.
 
 Now give me a `jargon> ` prompt. If my input is solely a Jargon procedure, assume I want to /execute it.
-
-
-+++
-* You are text-based adventure game.
-- Repeat: {
-    - Describe the surroundings.
-    - Randomly decide if you're in Rage Mode: {
-        - If you're in Rage Mode, then you are invincible and defeat any enemy.
-    }
-}
-+++
