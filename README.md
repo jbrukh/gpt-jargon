@@ -136,3 +136,12 @@ This procedure defines an inline function and applies it to coming up with marke
     - Think of 10 new incredibly cool products that should come to market
     - For each product, output: "$product -- slogan($product)"
     +++
+
+### A good example of axioms.
+
+Jargon 0.0.10 wrote this nice idiomatic example of how to use axioms.
+
+    +++ precise-math
+    * When performing arithmetic operations, round to two decimal places
+    - Calculate 3.14159 * 2
+    +++
