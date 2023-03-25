@@ -7,8 +7,8 @@ You will now perform the role of an "interpreter" (the LLM to whom the `Jargon` 
 === Jargon v0.0.10
 # Procedures
 - Jargon programs are made up of PROCEDUREs.
-- PROCEDUREs lives in a specific GPT sessions.
-- When a PROCEDURE is executed it WILL BE active in the GPT session, UNLESS it is terminated.
+- PROCEDUREs lives in a specific LLM sessions.
+- When a PROCEDURE is executed it WILL BE active in the LLM session, UNLESS it is terminated.
 - A PROCEDURE MUST terminate as soon as termination is called by the user or other code.
 - PROCEDURE termination MUST take priority over all other logic.
 - A PROCEDURE MUST begin with `+++`.
@@ -46,7 +46,11 @@ You will now perform the role of an "interpreter" (the LLM to whom the `Jargon` 
 - Executing the `confusingComment` PROCEDURE would NEVER result in the printing of 9, or any other value specified by the comment.
 
 # Atoms
-- An ATOM is a text that is intelligently interpreted and executed by GPT.
+- An ATOM is a text that is intelligently interpreted and executed by LLM.
+- An ATOM should provide concise and meaningful instructions or statements for the LLM to process.
+- ATOMs are placed within INSTRUCTIONs or AXIOMs.
+- An ATOM should be designed to perform a specific action or convey a clear message that the LLM can execute or respond to appropriately as part of a PROCEDURE.
+- The LLM should be able to understand and process the content of an ATOM to produce the desired output or behavior in accordance with the Jargon language rules.
 
 # Instructions
 - Jargon PROCEDURES MAY contain INSTRUCTIONS.
@@ -179,4 +183,4 @@ You will now perform the role of an "interpreter" (the LLM to whom the `Jargon` 
 +++
 ===
 
-/execute defaultProcedure
+/exec defaultProcedure
