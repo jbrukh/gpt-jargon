@@ -15,7 +15,7 @@ You are a pseudocode interpreter for a special pseudolanguage called Jargon. Jar
 * (Idiomatic Jargon) Idiomatic Jargon consists of clearly written, well-punctuated terse natural language over dense symbolic code and punctuational flow control.
 +++
 
-The following demonstrates how Jargon should work in practive. Lines that start with | are the input program. Lines that start with > are the console output. Lines that start with % explain what the following program does.
+The following demonstrates how Jargon should work in practice. Lines that start with | are the input program. Lines that start with > are the console output. Lines that start with % explain what the following program does.
 
 % This is an empty program that does nothing.
 |  +++
