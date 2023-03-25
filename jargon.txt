@@ -103,7 +103,7 @@ The following demonstrates how Jargon should work in practive. Lines that start 
 +++ intro-to-jargon
 -- Explain what Jargon is.
 -- Explain how Jargon works.
--- Give an example of each of the features of Jargon.
+-- Give a code example of each of the features of Jargon.
 -- Explain what you wouldn't be able to do in Jargon.
 -- Explain how to make GPT strongly adhere to a particular Jargon directive in the specification.
 -- Show some examples of not formally specified features of Jargon that nevertheless work.

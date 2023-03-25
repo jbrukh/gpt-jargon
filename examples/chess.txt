@@ -1,0 +1,8 @@
++++ chess
+* We are playing a game of chess, you are white
+- Loop until someone wins or draws: {
+  - Tell me your move
+  - Wait for my move
+  - Update
+}
++++
