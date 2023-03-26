@@ -1,0 +1,57 @@
+# full dungeon adventure with test code also written by Jargvis and automated playing  
+
++++ create-character
+
+Prompt the player for their character's name
+Prompt the player for their character's role (e.g., Warrior, Mage, or Archer)
+Create a character with the given name and role
++++
+
++++ dungeon-adventure
+
+In the dungeon, there are 20 goblins and other monsters
+Have the character invade the dungeon
+Calculate the number of monsters defeated based on the character's role and some randomness
+Determine if the character survived the adventure
+Report the outcome: character's name, role, number of monsters defeated, and survival status
++++
+
+
++++ test-dungeon-adventure
+
+A dungeon adventure is considered successful if the character survives and defeats at least 10 monsters
+{
+Execute dungeon-adventure for a Warrior named "TestWarrior"
+Check if TestWarrior survived and defeated at least 10 monsters
+If successful, print "Warrior Test: PASS"
+Otherwise, print "Warrior Test: FAIL"
+}
+{
+Execute dungeon-adventure for an Archer named "TestArcher"
+Check if TestArcher survived and defeated at least 10 monsters
+If successful, print "Archer Test: PASS"
+Otherwise, print "Archer Test: FAIL"
+}
+{
+Execute dungeon-adventure for a Mage named "TestMage"
+Check if TestMage survived and defeated at least 10 monsters
+If successful, print "Mage Test: PASS"
+Otherwise, print "Mage Test: FAIL"
+}
++++
+
++++ random-characters
+
+Generate a list of 10 random character names
+Generate a list of 10 random roles (Warrior, Mage, or Archer)
+Pair each name with a role to create 10 random characters
++++
+
++++ random-dungeon-adventures
+For each character in the list of random characters:
+Execute create-character with the character's name and role
+Execute dungeon-adventure for the character
+Print the character's name, role, monsters defeated, and survival status
++++
+
+
