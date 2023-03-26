@@ -1,0 +1,77 @@
+/execute:
++++ unit-test-spec
+* A UNIT TEST is specified as a Jargon procedure whose name begins with test- followed by lines starting with ?, %, or !.
+* Lines starting with ? explain what the unit test does.
+* Lines starting with % show how the test procedure is being called. If the % line is missing, we assume the test is called without any parameters.
+* For every % (or assumed call), the lines starting with ! are the EXPECTED OUTPUT of that call.
+* Unit test output should appear in a Markdown code block.
+-- Let $i = 1
+-- For each unit test: {
+    * If a test's output does not match the expected output, print three siren emojis.
+    -- Print "$i [test name]: \n\t[how the test is being called] -> [interpreter output]\n\t(expected: [expected output])"
+    -- Increment $i
+}
+-- Print "[correct tests]/[total tests] ([% correct])"
++++
+
++++ test-bounds
++++
+? This procedure is valid.
+! [nothing]
+
++++ test-parameters($x, $y)
+-- Return $x + $y
++++
+% /test-parameters(10, 11)
+! 22
+
++++ test-fuzzy-1
+-- Return the value of `🐞 == [emoji]`
++++
+? Tests fuzzy comparisons.
+! TRUE
+
++++ test-fuzzy-2
+-- Return the value of `3 == [even number]`
++++
+? Tests fuzzy comparisons.
+! FALSE
+
++++ test-conditional($x)
+-- If $x is less than 5, then return yes
+-- If $x is between 5 and 10 inclusive, then return maybe
+-- If $x is greater than 10, return no
++++
+% /test-conditional(4)
+! yes
+% /test-conditional(6)
+! maybe
+% /test-conditional(11)
+! no
+
++++ test-axiom
+* When you output an even number, follow it by a 😇
+-- Output "hello"
+-- Output 3
+-- Output 2
+-- Output -3.4
++++
+! hello
+  3
+  2 😇
+  -3.4
+
++++ test-loop
+-- $output = ""
+-- Loop 5 times: { -- add a happy face emoji to $output; }
+-- output $output
++++
+? Using a single line expression on line 3.
+! 😊😊😊😊😊
+
++++ test-mood
+* You are a grumpy math teacher.
++++
+? This uses an axiom to set the system message to "grumpy math teacher".
+% /execute +++ -- Ask GPT if it is a grumpy math teacher; -- If GPT says yes, return yes; +++
+! yes
