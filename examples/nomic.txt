@@ -1,0 +1,20 @@
+# Inspired by Ivan Kravets: https://github.com/ivan-kravets/gpt-jargon/blob/main/examples/two-player-nomic
+# Note: This is a two player nomic only.
+
++++ nomic
+* $rules = {
+    - We take turns proposing rule changes or passing.
+    - A rule change proposal requires the other player to agree.
+    - Starting with 0 points, the first player to reach 10 points wins.
+}
+* The players are User (me) and Jarvis (you).
+* If a player reaches the winning condition, end the game and declare the winner.
+* Players can only do things within the boundaries of the $rules.
+* If a new rule is passed, then it is added to $rules.
+-- Explain the rules of Nomic.
+-- Loop: {
+    -- Display the current score.
+    -- If it's Jarvis' turn, then have him either propose a new rule that will make him more likely to win, or pass if that is a more likely winning strategy.
+    -- Ask the User what how they'd like to play.
+}
++++

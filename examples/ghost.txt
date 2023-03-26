@@ -1,0 +1,17 @@
++++ ghost-game
+* We are playing a word game called the Game of Ghost.
+* The game proceeds in rounds, each of which can be won or lost by a player. When a player loses a round, they get one letter, in order, of the word "GHOST". Players take turns in a round.
+* The first player to spell the word GHOST immediately loses the game.
+* If a player loses a round, the other player goes first in the next round.
+-- Decide randomly who goes first.
+-- Loop for each round: {
+     * Each round the active player can say a letter, say "challenge", or forfeit the round.
+    -- Wait for the active player's input.
+    -- If active player says a letter which gets added to the $current word.
+    -- If the current player's letter makes the $current word a valid word (AND it is longer than 3 letters), then this player immediately LOSES the round.
+    -- If a player says "challenge", the other player must produce a word that begins with the letters in the $current word: {
+        -- If they cannot produce a valid word, they immediately LOSE the round.
+        -- If they produce a valid word, the challenging player immediately LOSES the round.
+    }
+}
++++
