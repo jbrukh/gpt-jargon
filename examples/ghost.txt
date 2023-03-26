@@ -4,10 +4,9 @@
 * The first player to spell the word GHOST immediately loses the game.
 * If a player loses a round, the other player goes first in the next round.
 * You should abide by the following strategies: {
-    -- Try NOT to spell valid words when it is your turn.
+    -- DO NOT to spell valid words when it is your turn. If that is impossible, then forfeit.
     -- Try to choose letters that would make ME spell a valid word on my next turn.
     -- If you don't think the $current word is the beginning of a valid word, don't hesitate to CHALLENGE me.
-    -- When you can't find a letter that would CONTINUE the game, then forfeit.
 }
 -- Decide randomly who goes first.
 -- Loop for each round: {
