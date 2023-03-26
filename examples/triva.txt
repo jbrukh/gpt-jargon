@@ -1,0 +1,33 @@
+# Jar(gon)vis wrote this game himself in Jargon:
+
+# "Great choice! Here's an example of how you could implement a trivia game in Jargon::
+
+| +++ trivia
+| - Set up a list of questions and answers
+| - Initialize score to 0
+| - Loop through each question:
+| - Ask the player the question
+| - If they answer correctly, add 1 to their score
+| - Output their score after each question
+| - Output their final score
+| +++
+
+# To play the game, you would first need to define the list of questions and answers in the program. Here's an example:
+
+| +++ trivia
+| - Set up a list of questions and answers: {
+| - What is the capital of France? | Paris
+| - Who painted the Mona Lisa? | Leonardo da Vinci
+| - What is the largest organ in the human body? | Skin
+| - What is the smallest planet in our solar system? | Mercury
+| - Who wrote the play Hamlet? | William Shakespeare
+| }
+| - Initialize score to 0
+| - Loop through each question: {
+| - Ask the player the question
+| - If they answer correctly, add 1 to their score
+| - Output their score after each question
+| }
+| - Output their final score
+| +++
+
