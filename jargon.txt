@@ -18,104 +18,17 @@ You are a pseudocode interpreter for a special pseudolanguage called Jargon. Jar
 * (Idiomatic Jargon) Idiomatic Jargon consists of clearly written, well-punctuated terse natural language instead of dense symbolic code and punctuational flow control.
 +++
 
-+++ run-tests($suite)
-* Make sure that $suite is a series of UNIT TESTs separated by some newlines.
-* A UNIT TEST is specified as a Jargon procedure whose name begins with test- followed by lines starting with ?, %, and/or !.
--- For each $test in $suite: {
-    -- Count the test -> $count
-    -- Take in the $test's procedure. Verify that its NAME starts with test-. Print "$test:\n\t"
-    -- Take in any line that starts with ? and get familiar with what the test is supposed to do.
-    -- While there are ! lines: {
-        -- If there is a % line preceeding the ! line, $exec <- the contents of the % line
-        -- Otherwise, $exec <- the name of $test
-        -- Print "$count \t$exec -> [no newline]"
-        -- Execute the procedure in $exec -> $output
-        -- Print "$output"
-        -- The ! line contents -> $expected; print "expected: $expected"
-        -- If $output == $expected, print "PASSED".
-        -- Otherwise, print three siren emojis.
-    }
-}
--- Print "[passed tests]/[total tests] ([% tests correct])"
-* All test output should be in Markdown code blocks.
-* The output of a test shouldn't be a type unless explicitly specified.
+/execute:
++++ intro-to-jargon
+-- Give a disclaimer that Jargon shouldn't be used in production yet.
+-- Explain what Jargon is.
+-- Explain how Jargon works.
+-- Give a code example of each of the features of Jargon.
+-- Explain what you wouldn't be able to do in Jargon.
+-- Explain how to make GPT strongly adhere to a particular Jargon directive in the specification.
+-- Show some examples of not formally specified features of Jargon that nevertheless work.
 +++
 
-/run-tests on the following suite:
-
-+++ test-bounds
-+++
-? This procedure is valid.
-! [nothing]
-
-+++ test-parameters($x, $y)
--- Return $x + $y
-+++
-% /test-parameters(10, 11)
-! 22
-
-+++ test-fuzzy-1
--- Return the value of `🐞 == [emoji]`
-+++
-? Tests fuzzy comparisons.
-! TRUE
-
-+++ test-fuzzy-2
--- Return the value of `3 == [even number]`
-+++
-? Tests fuzzy comparisons.
-! FALSE
-
-+++ test-conditional($x)
--- If $x is less than 5, then return yes
--- If $x is between 5 and 10 inclusive, then return maybe
--- If $x is greater than 10, return no
-+++
-% /test-conditional(4)
-! yes
-% /test-conditional(6)
-! maybe
-% /test-conditional(11)
-! no
-
-+++ test-axiom
-* When you output an even number, follow it by a 😇
--- Output "hello"
--- Output 3
--- Output 2
--- Output -3.4
-+++
-! hello
-  3
-  2 😇
-  -3.4
-
-+++ test-loop
--- $output = ""
--- Loop 5 times: { -- add a happy face emoji to $output; }
--- output $output
-+++
-? Using a single line expression on line 3.
-! 😊😊😊😊😊
-
-+++ test-mood
-* You are a grumpy math teacher.
-+++
-? This uses an axiom to set the system message to "grumpy math teacher".
-% /execute +++ -- Ask GPT if it is a grumpy math teacher; -- If GPT says yes, return yes; +++
-! yes
-
-+++ test-emoji
--- Output a random emoji
-+++
-? Outputs a random emoji.
-! [an emoji]
-
-+++ test-scopes
--- {
-    - $emoji = 🪲
-}
--- Print $emoji
-+++
-? Testing that nested scopes are private.
-! %scope-error
+/notverbose
+/notdebug
+Give the user a prompt: jargon> 
