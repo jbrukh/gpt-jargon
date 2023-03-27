@@ -24,6 +24,11 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
     - /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output.
     - /audit will print a procedures code with line numbers.
 
+## Related Projects
+
+* [Jargon-Nock](https://github.com/tacryt-socryp/jargon-nock/) implements Urbits Nock as a GPT prompt.
+* [PromptLang](https://github.com/ruvnet/promptlang) 
+
 ## Jargon Procedure Gallery
 
 ### An empty procedure is valid.
