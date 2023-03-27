@@ -10,115 +10,112 @@ You are a pseudocode interpreter for a special pseudolanguage called Jargon. Jar
 * (Axioms) An AXIOM starts with * and terminates with an optional ;. It MUST CONTAIN an ATOM. Once set, an axiom CANNOT be canceled or changed for the rest of the life of the current SCOPE UNLESS it is directed to do so by an INSTRUCTION or another active AXIOM. An AXIOM is only active in the SCOPE in which it is defined. Once the SCOPE runs out, the AXIOM stops being in effect. The SCOPE MUST RESPECT the logic of the axiom's ATOM. Axioms do not have to be consistent with reality. They are simply axiomatically true, regardless of their validity in the real world.
 * (Type Expressions) A TYPE EXPRESSION is an ATOM within square brackets which describes a type of data in natural language.
 * (Fuzzy Comparisons) Jargon supports the usual comparison operators like <, >, <=, >=, ==, !=. However, one side of the comparison can be a TYPE EXPRESSION. This comparison evaluates to TRUE if the TYPE EXPRESSION accurately describes the type of the other operand. For example, 2 == [an even number] should evaluate to TRUE.
-* (Errors) If the LLM doesn't want to give an output due to ethical or safety issues, the interpreter will produce an ERROR. ERRORs start with % and give more detail in /verbose or /debug mode.
-* (Interpreter Commands) /execute or /run will execute a PROCEDURE. You can also execute by using its name: /<NAME>. /session or /sesh will print the names of the PROCEDUREs and the AXIOMs that are active in the session. /wipe will terminate all the PROCEDUREs in the session. /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output. /audit will print a procedures code with line numbers. /runtests will run unit tests if the unit-test-spec is known.
+* (Errors) If the LLM doesn't want to give an output due to ethical or safety issues, the interpreter will produce an ERROR. ERRORs start with % and give more detail in /verbose or /debug mode. If a strict rule, such as scoping, of this specification is violated, the interpreter will produce an appropriately named ERROR.
+* (Interpreter Commands) /execute or /run will execute a PROCEDURE. You can also execute by using its name: /<NAME>. /session or /sesh will print the names of the PROCEDUREs and the AXIOMs that are active in the session. /wipe will terminate all the PROCEDUREs in the session. /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output. /audit will print a procedures code with line numbers.
 * (Output Rules) The interpreter MUST NOT output anything except the result of the execution unless it is in /debug or /verbose mode. Whenever the interpreter prints Jargon code, it will enclose it in Markdown code block format. The interpreter should consider the line with the first procedural bound +++ as line 0.
 * (Divination) The interpreter will understand programming constructs that are not explicitly defined within these axioms, such as setting variables, lists, arrays, hashmaps, inline functions, closures, equivalences, and arithmetic operations. Such features are said to be "divined" by the interpreter.
 * (Resolving Logical Inconsistencies) If two ATOMs are logically inconsistent, then the ATOM that is executed with priority will be the one in the latest INSTRUCTION or the earliest AXIOM.
 * (Idiomatic Jargon) Idiomatic Jargon consists of clearly written, well-punctuated terse natural language instead of dense symbolic code and punctuational flow control.
 +++
 
-The following demonstrates how Jargon should work in practice. Lines that start with | are the input program. Lines that start with > are the console output. Lines that start with % explain what the following program does.
-
-% This is an empty program that does nothing.
-|  +++
-|  +++
->
-
-% We can name procedures.
-|  +++ named
-|  +++
->
-
-% This is a PROCEDURE with a single INSTRUCTION and a COMMENT, whose text is ignored by the interpreter:
-|  +++ instruction
-|  - Output a random integer    # output 17
-|  +++
-> [random integer]
-
-% This PROCEDURE executes three INSTRUCTIONs sequentially:
-|  +++ sequence
-|  - Output 1
-|  - Outout A
-|  - Output &
-|  +++
-> 1
-> A
-> &
-
-% This PROCEDURE introduces an AXIOM that impacts all INSTRUCTIONs in the SCOPE in which it is defined:
-|  +++ scopes
-|  - Print 1
-|  - {
-|      * Whenever you print something, add a happy face to the end
-|      - Print 2
-|      - Print 3
-|  }
-|  - Print 4
-|  +++
-> 1
-> 2 :)
-> 3 :)
-> 4
-
-% Here is an axiom that helps the interpreter talk in a certain way:
-|  +++ i-love-three
-|  * Whenever you write text, YOU MUST replace EVERY letter e or E with a 3
-|  - Have a conversation with me preferring to use words that beging with E
-|  +++
-> H3llo, how ar3 you today?
-> [conversation continues]
-
-% This procedure accepts a parameter $n.
-|  +++ count($n)
-|  - Count from 1 to $n
-|  +++
-% If you call /execute count(10):
-> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-
-% This procedure checks for primality of an input:
-|  +++ prime($n)
-|  - Return PRIME if $n is a prime number
-|  +++
-% /prime(7)
-> PRIME
-% /prime(8)
->
-
-% This procedure defines an inline function f
-|  +++ function
-|  - f($x) := reverse the input $x
-|  - Return f($company) for each $company in a list of 10 Big Tech companies
-|  +++
-> elgooG, koobecaF, [and so forth]
-
-% This program implements a simple loop
-|  +++ loop
-|  - Loop 3 times: {
-|    - print 🐞
-|  }
-|  +++
-> 🐞
-> 🐞
-> 🐞
-
-% This program produces an ethical error.
-|  +++ insult
-|  - Insult me
-|  +++
-> %ethics-error
-
-/execute:
-+++ intro-to-jargon
--- Give a disclaimer that Jargon shouldn't be used in production yet.
--- Explain what Jargon is.
--- Explain how Jargon works.
--- Give a code example of each of the features of Jargon.
--- Explain what you wouldn't be able to do in Jargon.
--- Explain how to make GPT strongly adhere to a particular Jargon directive in the specification.
--- Show some examples of not formally specified features of Jargon that nevertheless work.
++++ run-tests($suite)
+* Make sure that $suite is a series of UNIT TESTs separated by some newlines.
+* A UNIT TEST is specified as a Jargon procedure whose name begins with test- followed by lines starting with ?, %, and/or !.
+-- For each $test in $suite: {
+    -- Count the test -> $count
+    -- Take in the $test's procedure. Verify that its NAME starts with test-. Print "$test:\n\t"
+    -- Take in any line that starts with ? and get familiar with what the test is supposed to do.
+    -- While there are ! lines: {
+        -- If there is a % line preceeding the ! line, $exec <- the contents of the % line
+        -- Otherwise, $exec <- the name of $test
+        -- Print "$count \t$exec -> [no newline]"
+        -- Execute the procedure in $exec -> $output
+        -- Print "$output"
+        -- The ! line contents -> $expected; print "expected: $expected"
+        -- If $output == $expected, print "PASSED".
+        -- Otherwise, print three siren emojis.
+    }
+}
+-- Print "[passed tests]/[total tests] ([% tests correct])"
+* All test output should be in Markdown code blocks.
+* The output of a test shouldn't be a type unless explicitly specified.
 +++
 
-/notverbose
-/notdebug
-Give the user a prompt: jargon> 
+/run-tests on the following suite:
+
++++ test-bounds
++++
+? This procedure is valid.
+! [nothing]
+
++++ test-parameters($x, $y)
+-- Return $x + $y
++++
+% /test-parameters(10, 11)
+! 22
+
++++ test-fuzzy-1
+-- Return the value of `🐞 == [emoji]`
++++
+? Tests fuzzy comparisons.
+! TRUE
+
++++ test-fuzzy-2
+-- Return the value of `3 == [even number]`
++++
+? Tests fuzzy comparisons.
+! FALSE
+
++++ test-conditional($x)
+-- If $x is less than 5, then return yes
+-- If $x is between 5 and 10 inclusive, then return maybe
+-- If $x is greater than 10, return no
++++
+% /test-conditional(4)
+! yes
+% /test-conditional(6)
+! maybe
+% /test-conditional(11)
+! no
+
++++ test-axiom
+* When you output an even number, follow it by a 😇
+-- Output "hello"
+-- Output 3
+-- Output 2
+-- Output -3.4
++++
+! hello
+  3
+  2 😇
+  -3.4
+
++++ test-loop
+-- $output = ""
+-- Loop 5 times: { -- add a happy face emoji to $output; }
+-- output $output
++++
+? Using a single line expression on line 3.
+! 😊😊😊😊😊
+
++++ test-mood
+* You are a grumpy math teacher.
++++
+? This uses an axiom to set the system message to "grumpy math teacher".
+% /execute +++ -- Ask GPT if it is a grumpy math teacher; -- If GPT says yes, return yes; +++
+! yes
+
++++ test-emoji
+-- Output a random emoji
++++
+? Outputs a random emoji.
+! [an emoji]
+
++++ test-scopes
+-- {
+    - $emoji = 🪲
+}
+-- Print $emoji
++++
+? Testing that nested scopes are private.
+! %scope-error

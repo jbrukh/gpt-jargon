@@ -1,21 +1,27 @@
-/execute:
-+++ unit-test-spec
-* A UNIT TEST is specified as a Jargon procedure whose name begins with test- followed by lines starting with ?, %, or !.
-* Lines starting with ? explain what the unit test does.
-* Lines starting with % show how the test procedure is being called. If the % line is missing, we assume the test is called without any parameters.
-* For every % (or assumed call), the lines starting with ! are the EXPECTED OUTPUT of that call.
-* Even if the expected output is a type, the result of /executing the test procedure should still be a concrete output.
-* Unit test output should appear in a Markdown code block.
--- Let $i = 1
--- For each unit test $procedure: {
-    -- $output := the result of /executing the $procedure, as specified on the % line
-    -- $expected := the expected output or type specified on the ! line
-    -- Print "$i [test name]: \n\t[how the test is being called] -> $output\n\t(expected: $expected)"
-    -- If $output != $expected, print three siren emojis and consider this test case failed. 
-    -- Increment $i
++++ run-tests($suite)
+* Make sure that $suite is a series of UNIT TESTs separated by some newlines.
+* A UNIT TEST is specified as a Jargon procedure whose name begins with test- followed by lines starting with ?, %, and/or !.
+-- For each $test in $suite: {
+    -- Count the test -> $count
+    -- Take in the $test's procedure. Verify that its NAME starts with test-. Print "$test:\n\t"
+    -- Take in any line that starts with ? and get familiar with what the test is supposed to do.
+    -- While there are ! lines: {
+        -- If there is a % line preceeding the ! line, $exec <- the contents of the % line
+        -- Otherwise, $exec <- the name of $test
+        -- Print "$count \t$exec -> [no newline]"
+        -- Execute the procedure in $exec -> $output
+        -- Print "$output"
+        -- The ! line contents -> $expected; print "expected: $expected"
+        -- If $output == $expected, print "PASSED".
+        -- Otherwise, print three siren emojis.
+    }
 }
--- Print "[passed tests]/[total tests] ([% correct])"
+-- Print "[passed tests]/[total tests] ([% tests correct])"
+* All test output should be in Markdown code blocks.
+* The output of a test shouldn't be a type unless explicitly specified.
 +++
+
+/run-tests on the following suite:
 
 +++ test-bounds
 +++
@@ -80,9 +86,16 @@
 ! yes
 
 +++ test-emoji
--- Output an explicit random emoji
+-- Output a random emoji
 +++
 ? Outputs a random emoji.
 ! [an emoji]
 
-/runtests
++++ test-scopes
+-- {
+    - $emoji = 🪲
+}
+-- Print $emoji
++++
+? Testing that nested scopes are private.
+! %scope-error
