@@ -10,6 +10,42 @@ Jargon is a natural language, informally specified, intelligently interpreted, r
 
 Jargon is an imprecise, nondeterministic natural language programming language (or, psuedolanguage) that is specified and interpreted by LLMs like GPT-4. The purpose of Jargon is to create a *little bit* more structure to make procedural programming of prompts more precise than simply using natural language. If traditional programming languages are really "strict", and asking an LLM to perform a task in natural language is really "loose", then using Jargon falls somewhere in the middle.
 
+### Properties of Jargon
+
+**Informal Specification**. Some of the features of Jargon are not specified in the Jargon definition. Instead, they are simply _divined_ of the general knowledge that the LLM has about programming languages. For example, Jargon does not specify variables at all, yet the following code still works:
+
+    +++ vars
+    -- $x = 5
+    -- Print "there were $x bananas"
+    +++
+
+**Natural Language Instructions**. In Jargon, you can simply tell it what to do in natural language. This works even though the natural language is not particularly precise:
+
+    +++ sum($x, $y)
+    -- Sum them
+    +++
+    
+**Referential Omnipotence**. The scope of data accessible to a Jargon program is the entire chat session, including the code of the interpreter and the Jargon procedure you are running, as well as all the LLM's knowledge about the world. That makes extremely omnipotent instructions possible:
+
+    +++ proc1
+    -- Return five random emojis
+    +++
+    
+    +++ proc2
+    -- Modify proc1 to return random numbers instead
+    -- Let $n <- the number of countries in Latin America
+    -- Instead of five, use $n
+    -- /execute proc1
+    +++
+    
+    /proc2
+
+## What can Jargon be used for?
+
+- [Benchmarking an LLM](https://twitter.com/jbrukh/status/1640444880689176576?s=20)
+- Programming bots that, including some that [teach you Spanish](https://twitter.com/jbrukh/status/1640444883654549507?s=20)
+- Psuedocode transpilation: [turn your pseudocode into actual code](https://twitter.com/jbrukh/status/1640444882106867712?s=20)
+
 ## Getting Started
 
 Jargon currently runs best on GPT-4, and to a limited extent, on GPT-3.5. Copy the prompt in `jargon.txt` into GPT, and it should give you a prompt:
@@ -23,12 +59,16 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
     - /wipe will terminate all the PROCEDUREs in the session.
     - /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output.
     - /audit will print a procedures code with line numbers.
+    
+## Unit Testing
+
+You can run unit tests on Jargon by using the Jargon procedure specified in `tests.txt`. Running tests should make Jargon work better. There is also some more info about running unit tests [in this article](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE).
 
 ## Related Projects
 
 * [Jargon-Nock](https://github.com/tacryt-socryp/jargon-nock/) implements Urbits Nock as a GPT prompt.
-* [PromptLang](https://github.com/ruvnet/promptlang)
-* [PML](https://github.com/dineshraju/pml)
+* [PromptLang](https://github.com/ruvnet/promptlang) is a custom programming language specifically designed for use in GPT-4 prompts. 
+* [PML](https://github.com/dineshraju/pml) is a markup pseudolanguage that's used in LLM prompt engineering to generate long-form content.
 
 ## Jargon Procedure Gallery
 
