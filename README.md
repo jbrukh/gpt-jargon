@@ -27,7 +27,8 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
 ## Related Projects
 
 * [Jargon-Nock](https://github.com/tacryt-socryp/jargon-nock/) implements Urbits Nock as a GPT prompt.
-* [PromptLang](https://github.com/ruvnet/promptlang) 
+* [PromptLang](https://github.com/ruvnet/promptlang)
+* [PML](https://github.com/dineshraju/pml)
 
 ## Jargon Procedure Gallery
 
