@@ -40,7 +40,7 @@ Jargon is an imprecise, nondeterministic natural language programming language (
     
     /proc2
 
-## What can Jargon be used for?
+### What can Jargon be used for?
 
 - [Benchmarking an LLM](https://twitter.com/jbrukh/status/1640444880689176576?s=20)
 - Programming bots that, including some that [teach you Spanish](https://twitter.com/jbrukh/status/1640444883654549507?s=20)
