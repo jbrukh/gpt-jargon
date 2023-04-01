@@ -67,6 +67,7 @@ You can run unit tests on Jargon by using the Jargon procedure specified in `tes
 ## Related Projects
 
 * [Jargon-Nock](https://github.com/tacryt-socryp/jargon-nock/) implements Urbits Nock as a GPT prompt.
+* [SudoLang](https://medium.com/javascript-scene/sudolang-a-powerful-pseudocode-programming-language-for-llms-d64d42aa719b) by Eric Elliot is pseudolanguage that specified itself.
 * [PromptLang](https://github.com/ruvnet/promptlang) is a custom programming language specifically designed for use in GPT-4 prompts. 
 * [PML](https://github.com/dineshraju/pml) is a markup pseudolanguage that's used in LLM prompt engineering to generate long-form content.
 
