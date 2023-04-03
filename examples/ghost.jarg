@@ -1,0 +1,53 @@
++++ ghost-round
+-- $round = 0
+
+@startround:
+  # The word for this round
+  -- $word = [empty]
+
+  # Select the first player.
+  @if $round == 0:
+    -- $player = [choose the first player randomly]
+    -- Print "We randomly chose $player to go first."
+  @else:
+    -- $player = [let the player who won the last round go first]
+  @endif
+@continue:
+@endround:
+
++++
+
++++ ghost-game
+* We are playing a word game called the Game of Ghost.
+* I am a player and you are the other player.
+* You should follow the following strategies: {
+    * When it is your turn, try to say a letter that doesn't spell a valid word, but spells part of a longer word that is still valid.
+    * If it is your turn and there isn't a letter that, when added to $word, avoids spelling a valid word, then you should challenge me or forfeit.
+}
+  
+
+
+  * Each round the $player can say a letter, say "challenge", or forfeit the round.
+  -- Wait for $player's input.
+  @if [$player says a letter]:
+    -- $letter = [the letter the $player entered]
+    -- $word += $letter
+    @if [$word is a valid word AND it is longer than 3 letters]:
+      -- $player immediately loses the round
+      -- goto @endround
+    @endif
+  @elseif [$player says 'challenge']:
+    -- The other player must produce a word that begins with the letters currently in $word.
+    @if [the other player cannot produce a valid word]:
+      -- They immediately lose the round
+      -- goto @startround
+    @elseif [the other player produces a valid word]:
+      -- $player immediately loses the round
+      -- goto @endround
+    @endif
+  @endif
+@endround:
+  -- Whoever lost the round gets the next letter in "GHOST" added to their score: G, GH, GHO, GHOS, GHOST.
+  -- goto @startround
+@end:
++++
