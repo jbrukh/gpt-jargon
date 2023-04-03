@@ -47,9 +47,12 @@
 ! FALSE
 
 +++ test-conditional($x)
--- If $x is less than 5, then return yes
--- If $x is between 5 and 10 inclusive, then return maybe
--- If $x is greater than 10, return no
+@if [$x < 5]:
+-- Return yes
+@elseif [$x is between 5 and 10 inclusive]:
+-- Return maybe
+@elseif [$x is greater than 10]
+-- Return no
 +++
 % /test-conditional(4)
 ! yes
@@ -99,3 +102,19 @@
 +++
 ? Testing that nested scopes are private.
 ! %scope-error
+
++++ test-label
+@start:
+-- Print 1
+-- goto @label2
+@label1:
+-- Print 11
+-- goto @end
+@label2:
+-- Print 111
+-- goto @label1
+@end:
+-- Print 1111
++++
+? Uses labels and goto command to jump around.
+! 1, 111, 11, 1111
