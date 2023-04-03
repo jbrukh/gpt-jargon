@@ -1,22 +1,40 @@
 +++ run-tests($suite)
 * Make sure that $suite is a series of UNIT TESTs separated by some newlines.
 * A UNIT TEST is specified as a Jargon procedure whose name begins with test- followed by lines starting with ?, %, and/or !.
--- For each $test in $suite: {
-    -- Count the test -> $count
-    -- Take in the $test's procedure. Verify that its NAME starts with test-. Print "$test:\n\t"
-    -- Take in any line that starts with ? and get familiar with what the test is supposed to do.
-    -- While there are ! lines: {
-        -- If there is a % line preceeding the ! line, $exec <- the contents of the % line
-        -- Otherwise, $exec <- the name of $test
-        -- Print "$count \t$exec -> [no newline]"
-        -- Execute the procedure in $exec -> $output
-        -- Print "$output"
-        -- The ! line contents -> $expected; print "expected: $expected"
-        -- If $output == $expected, print "PASSED".
-        -- Otherwise, print three siren emojis.
-    }
-}
--- Print "[passed tests]/[total tests] ([% tests correct])"
+-- $count = 0
+-- $passed = 0
+@test_loop:
+@if [no more tests]:
+-- goto @end
+@endif
+-- $test = [the next test in the input]
+-- Take in the $test's procedure. Verify that its NAME starts with test- or fail. Print "$test:\n\t"
+-- Take in any line that starts with ? and use it to understand what the test is supposed to do.
+@read_bangs:
+    @if [there is a % line preceeding the ! line]:
+    -- $exec <- the contents of the % line
+    @else: 
+    -- $exec <- the name of $test
+    @endif
+    -- $count += 1
+    -- Print "$count \t$exec -> [no newline]"
+    -- Execute the procedure in $exec -> $output
+    -- Print "$output"
+    -- The ! line contents -> $expected; print "expected: $expected"
+    @if [$output == $expected]:
+    -- Print "PASSED"
+    -- $passed += 1
+    @else:
+    -- Print three siren emojis.
+    # $passed will not be incremented here.
+    @endif
+    @if [there are more ! lines]:
+    -- goto @read_bangs
+    @endif
+@done_bangs:
+-- goto @test_loop
+@end:
+-- Print "[$passed]/[$count] ([% tests correct])"
 * All test output should be in Markdown code blocks.
 * The output of a test shouldn't be a type unless explicitly specified.
 +++
@@ -32,7 +50,7 @@
 -- Return $x + $y
 +++
 % /test-parameters(10, 11)
-! 22
+! 21
 
 +++ test-fuzzy-1
 -- Return the value of `🐞 == [emoji]`

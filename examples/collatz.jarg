@@ -2,7 +2,7 @@
 @start:
 -- Print $n
 
-@if $n <= 0:
+@if $n <= 1:
   -- goto @end
 @elseif [$n is even]:
   -- $n = $n / 2
