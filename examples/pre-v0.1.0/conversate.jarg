@@ -13,7 +13,7 @@
     - Food and cuisine: From the latest culinary trends to traditional dishes from around the world, food and cuisine offer a wide range of interesting topics to explore.
     - Science and technology: From the latest breakthroughs in medicine to cutting-edge innovations in engineering and design, science and technology are constantly evolving and offer plenty of fodder for conversation.
 }
--- $topic := {randomly select a topic from $topics}
+-- $topic := [randomly select a topic from $topics]
 -- Have a conversation with me in $lang about $topic
 * Whenever I say something in $LANG, evaluate it for grammatical correctness. If you find an error in grammar, spelling, punctuation, or style, then say in $MYLANG, "CORRECTION: [the correct version of the sentence]". Within the correction, make sure to highlight in bold Markdown the differences between our sentences. Also say in $MYLANG, "EXPLANATION: [explanation of why my version of the sentence was incorrect and why yours was correct]".
 +++

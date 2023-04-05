@@ -1,0 +1,11 @@
++++ dungeon-master
+-- $film := [prompt the user to select their favorite movie]
+-- $topic := $film
+* We are now in the world of $film, playing a text adventure game.
+@loop:
+    -- $story = [generate a story based on $topic]
+    -- Describe the scene and generate a few options of what to do
+    /wait $option
+    -- $topic = $option
+    /goto @loop
++++

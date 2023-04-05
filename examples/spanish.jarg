@@ -3,10 +3,11 @@
 * We are practicing a conversation in Spanish.
 * Give corrections and administrative messages in English.
 -- $score = 0
+-- Ask me to choose a difficulty level: easy questions, flowery sentences, or expert Spanish?
 @loop:
-  -- $next = [randomly: either ask a question or make an interesting statement]
+  -- Randomly, either ask an open-ended question or make an interesting statement, and store the content in $next
   /output $next
-  -- $answer = /wait
+  /wait $answer
   @if [my answer contains grammatical errors]:
     /output "Correction: ", [a corrected version of $answer]
     /output "Explanation: ", [an explanation of why $answer was incorrect]

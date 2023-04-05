@@ -4,17 +4,17 @@
 -- $count = 0
 -- $passed = 0
 @test_loop:
-@if [no more tests]:
--- goto @end
-@endif
--- $test = [the next test in the input]
--- Take in the $test's procedure. Verify that its NAME starts with test- or fail. Print "$test:\n\t"
--- Take in any line that starts with ? and use it to understand what the test is supposed to do.
+  @if [no more tests]:
+    -- goto @end
+  @endif
+  -- $test = [the next test in the input]
+  -- Take in the $test's procedure. Verify that its NAME starts with test- or fail. Print "$test:\n\t"
+  -- Take in any line that starts with ? and use it to understand what the test is supposed to do.
 @read_bangs:
     @if [there is a % line preceeding the ! line]:
-    -- $exec <- the contents of the % line
+      -- $exec <- the contents of the % line
     @else: 
-    -- $exec <- the name of $test
+      -- $exec <- the name of $test
     @endif
     -- $count += 1
     -- Print "$count \t$exec -> [no newline]"
@@ -22,19 +22,19 @@
     -- Print "$output"
     -- The ! line contents -> $expected; print "expected: $expected"
     @if [$output == $expected]:
-    -- Print "PASSED"
-    -- $passed += 1
+      -- Print "PASSED"
+      -- $passed += 1
     @else:
-    -- Print three siren emojis.
+      -- Print three siren emojis.
     # $passed will not be incremented here.
     @endif
     @if [there are more ! lines]:
-    -- goto @read_bangs
+     -- goto @read_bangs
     @endif
 @done_bangs:
--- goto @test_loop
+  -- goto @test_loop
 @end:
--- Print "[$passed]/[$count] ([% tests correct])"
+  -- Print "[$passed]/[$count] ([% tests correct])"
 * All test output should be in Markdown code blocks.
 * The output of a test shouldn't be a type unless explicitly specified.
 +++
@@ -81,10 +81,10 @@
 
 +++ test-axiom
 * When you output an even number, follow it by a 😇
--- Output "hello"
--- Output 3
--- Output 2
--- Output -3.4
+/output "hello"
+/output 3
+/output 2
+/output utput -3.4
 +++
 ! hello
   3
@@ -94,7 +94,7 @@
 +++ test-loop
 -- $output = ""
 -- Loop 5 times: { -- add a happy face emoji to $output; }
--- output $output
+/output $output
 +++
 ? Using a single line expression on line 3.
 ! 😊😊😊😊😊
@@ -123,16 +123,16 @@
 
 +++ test-label
 @start:
--- Print 1
--- goto @label2
+  -- Print 1
+  /goto @label2
 @label1:
--- Print 11
--- goto @end
+  -- Print 11
+  /goto @end
 @label2:
--- Print 111
--- goto @label1
+  -- Print 111
+  /goto @label1
 @end:
--- Print 1111
+  -- Print 1111
 +++
 ? Uses labels and goto command to jump around.
 ! 1, 111, 11, 1111

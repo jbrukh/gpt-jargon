@@ -1,7 +1,8 @@
 +++ collatz($n)
 # Print Collatz sequences
+* Output should be a comma-separated list
 @start:
-/output $n
+  /output $n
 @if $n <= 1:
   /goto @end
 @elseif [$n is even]:
@@ -11,5 +12,4 @@
 @endif
 /goto @start
 @end:
-* Output should be a comma-separated list
 +++
