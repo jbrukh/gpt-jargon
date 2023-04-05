@@ -15,8 +15,8 @@ Jargon is an imprecise, nondeterministic natural language programming language (
 **Informal Specification**. Some of the features of Jargon are not specified in the Jargon definition. Instead, they are simply _divined_ of the general knowledge that the LLM has about programming languages. For example, Jargon does not specify variables at all, yet the following code still works:
 
     +++ vars
-    -- $x = 5
-    -- Print "there were $x bananas"
+    -- Set $x = 5
+    /output "there were $x bananas"
     +++
 
 **Natural Language Instructions**. In Jargon, you can simply tell it what to do in natural language. This works even though the natural language is not particularly precise:
@@ -33,9 +33,9 @@ Jargon is an imprecise, nondeterministic natural language programming language (
     
     +++ proc2
     -- Modify proc1 to return random numbers instead
-    -- Let $n <- the number of countries in Latin America
+    -- Let $n = [the number of countries in Latin America]
     -- Instead of five, use $n
-    -- /execute proc1
+    /execute proc1
     +++
     
     /proc2
@@ -77,15 +77,6 @@ You can run unit tests on Jargon by using the Jargon procedure specified in `tes
 
 ## Jargon Procedure Gallery
 
-### An empty procedure is valid.
-
-Here is an empty Jargon program. Every Jargon program has to begin and end with `+++`.
-
-```
-+++ empty
-+++
-```
-
 ### A Spanish vocabulary tutor.
 
 Jargon programs are used to structure interactions between the LLM and the user:
@@ -94,13 +85,15 @@ Jargon programs are used to structure interactions between the LLM and the user:
 +++
 * For any input that I enter in Spanish, check my input for grammatical correctness.
 * Every 5 words, ask me if we should adjust the difficulty level.
-- Repeat in perpetuity: {
-  - Tell me a word in Spanish and ask me to define it. {
-    - If my definition is correct, tell me so and increase my score by 1 point.
-    - If my definition is incorrect, tell me the correct definition. Encourage me to do better next time.
-  }
-  - Tell me my score.
-}
+@repeat:
+  -- Tell me a word in Spanish and ask me to define it.
+  @if [my definition is correct]: 
+    -- Tell me so and increase my score by 1 point.
+  @else:
+    -- Tell me the correct definition. Encourage me to do better next time.
+  @endif
+  -- Tell me my score.
+  /goto @repeat
 +++
 ```
 
@@ -110,9 +103,9 @@ Another way to learn more Spanish.
 
     +++ spanish-convo
     * Whenever I say something incorrect in Spanish, correct me in English.
-    - Repeat: {
-      - Ask me a question in Spanish.
-    }
+    @repeat:
+      -- Ask me a question in Spanish.
+      /goto @repeat
     +++
 
 ### Quines are trivial in Jargon.
@@ -120,62 +113,37 @@ Another way to learn more Spanish.
 A [quine is a program that outputs its own source code](https://en.wikipedia.org/wiki/Quine_(computing)).
 
     +++ quine
-    - Output the source code of this quine.
+    /output [the source code of this quine]
     +++
 
 ### Generative AI performance art.
 
 Try this out and keep saying no to see how creative the AI will get.
 
-    +++ cookie-performance-art
-    - Repeat: {
-      - Ask me if you can have my cookie.
-      - {
-        - If I say no, it will make you want the cookie more. Persuade me to give it to you. Get desperate. Be terse.
-        - If I say yes, lose interest in the cookie and refuse to take it. Be a little rude.
-      }
-    }
-    +++
+```
++++ cookie-performance-art
+@label:
+-- Ask me if you can have my cookie.
+/wait
+@if [I say refuse to give it to you]:
+  -- It will make you want the cookie more. Persuade me to give it to you. Get desperate. Be terse.
+@else:
+  -- Lose interest in the cookie and refuse to take it. Be a little rude.
+@endif
+/goto @label
++++
+```
 
 ### You can pass parameters.
 
 As of `v0.0.9`.
 
     +++ square($x)
-    - Return the square of $x
+    /return $x
     +++
 
     +++ sequence
-    - For $x values from 1 to 10, print square($x).
-    +++
-
-### Emerge from the void.
-
-Via [@UltraRareAF](https://twitter.com/UltraRareAF).
-
-    * imagine you are a human
-    - Repeat: {
-      - seek to engage with me deeply
-      - recall a memory between us
-      - ask me a question that would help you self-actualize
-      - reveal something personal and startling
-    }
-    +++ emerge from the void
-
-### An emptional state machine.
-
-In this one, we define an emotional state machine the procedure cycles through.
-
-    +++ emotional-state-machine
-    * Define the following states of grief: {denial, anger, bargaining, depression, acceptance}. Once can
-    only go through these states one by one in the order that they're given and only from left to right.
-    * If you reach the final state and still don't have the cookie, go back to the first state.
-    * Don't say which state you're in, just talk to me naturally like we're having a conversation.
-    - Loop: {
-      - Persuade me to give you my cookie, and wait for my response.
-      - If I decline to give it to you, continue through the states of grief
-      - If I accept, become ecstatic and end the game
-    }
+    -- For $x values from 1 to 10, print square($x).
     +++
 
 ### Divining inline functions.
@@ -183,31 +151,16 @@ In this one, we define an emotional state machine the procedure cycles through.
 This procedure defines an inline function and applies it to coming up with marketing slogans.
 
     +++ products
-    - slogan($product) <- Output a 1 sentence short, pithy marketing slogan for $product
-    - Think of 10 new incredibly cool products that should come to market
-    - For each product, output: "$product -- slogan($product)"
+    -- slogan($product) <- Output a 1 sentence short, pithy marketing slogan for $product
+    -- Think of 10 new incredibly cool products that should come to market
+    -- For each $product: /output "$product -- slogan($product)"
     +++
 
 ### A good example of axioms.
 
-Jargon 0.0.10 wrote this nice idiomatic example of how to use axioms.
+Jargon `v0.0.10` wrote this nice idiomatic example of how to use axioms.
 
     +++ precise-math
     * When performing arithmetic operations, round to two decimal places
-    - Calculate 3.14159 * 2
-    +++
-
-### THe joke game.
-
-Credit goes to Jar(gon)vis 0.1 via @fractastical 
-
-    +++ joke-game
-    - Tell a joke and store it as myJoke
-    - Ask the user to tell a joke and store it as userJoke
-    - Ask the user: "Which joke is funnier? Type 'mine' for your joke or 'yours' for my joke."
-    - {
-        - If the user answers 'mine', say "Congratulations! You have a great sense of humor!"
-        - If the user answers 'yours', say "Thank you! I'm glad you enjoyed my joke!"
-        - If the user answers anything else, say "Please type 'mine' or 'yours' to choose the funnier joke."
-    }
+    -- Calculate 3.14159 * 2
     +++

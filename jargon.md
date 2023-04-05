@@ -149,6 +149,7 @@ This code uses the `@while:` label to implement a loop that keeps printing `$x` 
 * `/goto @label` will go to the specified `@label`.
 * `/output OUTPUT` will output a string or value to the user.
 * `/wait` will make the interpreter stop outputting and wait for the user to enter some input.
+* `/return` will return from a procedure or function.
 * `/execute` will execute a PROCEDURE. You can also execute by using its name: `/<NAME>`.
 * `/debug` turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output.
 * `/audit` will print the code of a PROCEDURE with line numbers.
