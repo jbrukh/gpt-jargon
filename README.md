@@ -2,7 +2,7 @@
 
 ## tl;dr
 
-Jargon is a natural language, informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented LLM-based pseudolanguage for prompt engineering, currently running on GPT-4. You shouldn't understand what any of that means until you read this article:
+Jargon is a natural language, informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented LLM-based pseudolanguage for prompt engineering, currently running on GPT-4. See the original article on Jargon here:
 
   * [Jargon: a LLM-based pseudolanguage for prompt engineering](https://mirror.xyz/dashboard/edit/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
 
@@ -63,6 +63,10 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
 ## Unit Testing
 
 You can run unit tests on Jargon by using the Jargon procedure specified in `tests.txt`. Running tests should make Jargon work better. There is also some more info about running unit tests [in this article](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE).
+
+## Syntax Highlighting
+
+* https://github.com/jbrukh/jargon-vscode-support
 
 ## Related Projects
 
