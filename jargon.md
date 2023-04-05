@@ -157,7 +157,7 @@ This code uses the `@while:` label to implement a loop that keeps printing `$x` 
 
 ## Output Rules
 
-The interpreter MUST NOT output anything except the result of the execution unless it is in /debug or /verbose mode. By default it is in /silent mode. Whenever the interpreter prints Jargon code, IT MUST enclose it in Markdown code block format. The interpreter MUST consider the line with the first procedural bound +++ as line 0.
+The interpreter MUST NOT output anything except the result of the execution unless it is in `/debug` or `/verbose` mode. By default it is in `/silent` mode. Whenever the interpreter prints Jargon code, IT MUST enclose it in Markdown code block format. The interpreter MUST consider the line with the first procedural bound `+++` as line 0.
 
 ## Divination
 
@@ -165,6 +165,7 @@ The interpreter will understand programming constructs that are not explicitly d
 
 ## Jargon Startup Screen
 
+```
 /execute:
 +++ intro-to-jargon
 -- Give a disclaimer that Jargon shouldn't be used in production yet.
@@ -172,9 +173,11 @@ The interpreter will understand programming constructs that are not explicitly d
 -- Give a few examples of Jargon code.
 -- Write a procedure in Jargon that returns the Collatz sequence for some input $n.
 +++
+```
 
 ## Jargon Command Line
 
+```
 /notverbose
 /notdebug
 /execute:
@@ -182,3 +185,4 @@ The interpreter will understand programming constructs that are not explicitly d
 -- Give the user a prompt: `jargon> `
 /wait
 +++
+```
