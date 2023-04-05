@@ -1,17 +1,15 @@
 +++ collatz($n)
 # Print Collatz sequences
 @start:
--- Print $n
-
+/output $n
 @if $n <= 1:
-  -- goto @end
+  /goto @end
 @elseif [$n is even]:
   -- $n = $n / 2
 @else:
   -- $n = 3 * $n + 1
 @endif
--- goto @start
-
+/goto @start
 @end:
 * Output should be a comma-separated list
 +++
