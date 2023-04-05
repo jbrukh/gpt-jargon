@@ -1,4 +1,5 @@
 +++ collatz($n)
+# Print Collatz sequences
 @start:
 -- Print $n
 
@@ -12,5 +13,5 @@
 -- goto @start
 
 @end:
-* Output should be a comma-separated list 
+* Output should be a comma-separated list
 +++
