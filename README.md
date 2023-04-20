@@ -48,7 +48,7 @@ Jargon is an imprecise, nondeterministic natural language programming language (
 
 ## Getting Started
 
-Jargon currently runs best on GPT-4, and to a limited extent, on GPT-3.5. Copy the prompt in `jargon.txt` into GPT, and it should give you a prompt:
+Jargon currently runs best on GPT-4, and to a limited extent, on GPT-3.5. Copy the prompt in `jargon.md` into GPT, and it should give you a prompt:
 
     jargon>
 
