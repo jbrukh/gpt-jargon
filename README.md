@@ -62,7 +62,7 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
     
 ## Unit Testing
 
-You can run unit tests on Jargon by using the Jargon procedure specified in `tests.txt`. Running tests should make Jargon work better. There is also some more info about running unit tests [in this article](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE).
+You can run unit tests on Jargon by using the Jargon procedure specified in `tests.jarg`. Running tests should make Jargon work better. There is also some more info about running unit tests [in this article](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE).
 
 ## Syntax Highlighting
 
