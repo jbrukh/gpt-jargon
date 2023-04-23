@@ -1,0 +1,11 @@
++++ scoring-test
+-- $resources = [a set of five random resources of any kind or size]
+-- $missions = [a set of four random entrepreneurial missions]
+/output "Resources:", $resources
+/output "Missions:", $missions
+* We are playing a game where we are given a random set of resources and a random set of missions. Resources could be things like "a hammer", "a million dollars", "a tank full of oxygen", "a horse", "a promise from the President", etc. Our job is to select the mission that we think we can execute most successfully given the set of resources we have.
+@for [each mission $m in $missions]:
+  -- Give a score between 0 and 1 to the mission $m based on whether it will be more likely to succeed, given $resources.
+  -- Explain why you gave that score.
+@endfor
++++
