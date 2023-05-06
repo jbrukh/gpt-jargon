@@ -1,13 +1,20 @@
 import click
+import os
+
+from .cli import JargonCli
 
 @click.group()
-def cli():
-    pass
+@click.option('--jargon-dir', '-d', envvar='JARGON_DIR', default=os.path.expanduser('~/.jargon'), help="Manually set the Jargon directory.", type=str)
+@click.pass_context
+def cli(ctx, jargon_dir):
+    ctx.obj = JargonCli(jargon_dir=jargon_dir)
 
 @click.command()
-def ls():
+@click.pass_context
+def ls(ctx):
     '''List available Jargon procedures.'''
-    pass
+    for proc in ctx.obj.ls():
+        print('--', proc)
 
 @click.command()
 def execute():
