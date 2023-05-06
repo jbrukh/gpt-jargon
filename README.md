@@ -48,6 +48,8 @@ Jargon is an imprecise, nondeterministic natural language programming language (
 
 ## Getting Started
 
+### Running Jargon directly
+
 Jargon currently runs best on GPT-4, and to a limited extent, on GPT-3.5. Copy the prompt in `jargon.md` into GPT, and it should give you a prompt:
 
     jargon>
@@ -59,7 +61,17 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
     - /wipe will terminate all the PROCEDUREs in the session.
     - /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output.
     - /audit will print a procedures code with line numbers.
-    
+
+### Running Jargon using `jargon-cli`
+
+Install `jargon-cli` by writing:
+
+    $ pip install .
+
+Run the tool:
+
+    $ jargon help
+
 ## Unit Testing
 
 You can run unit tests on Jargon by using the Jargon procedure specified in `tests.jarg`. Running tests should make Jargon work better. There is also some more info about running unit tests [in this article](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE).
