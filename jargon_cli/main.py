@@ -32,7 +32,7 @@ def execute(ctx, proc):
 @click.argument('jargfile')
 @click.pass_context
 def edit(ctx, jargfile):
-    '''Edit a procedure.'''
+    '''Edit or create a procedure.'''
     jargdir = ctx.obj.jargdir
     if not jargfile.endswith('.jarg'):
         jargfile += '.jarg'

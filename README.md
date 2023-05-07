@@ -72,6 +72,20 @@ Run the tool:
 
     $ jargon help
 
+First, create a Jargon procedure:
+
+    $ jargon edit nomic
+
+This creates `nomic.jarg` in your `JARGON_DIR`, which is `~/.jargon/` by default. You can list known procedures:
+
+    $ jargon ls
+
+To execute a procedure:
+
+    $ jargon execute nomic
+
+This will give you a command line interface to the Jargon-executing LLM.
+
 ## Unit Testing
 
 You can run unit tests on Jargon by using the Jargon procedure specified in `tests.jarg`. Running tests should make Jargon work better. There is also some more info about running unit tests [in this article](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE).
