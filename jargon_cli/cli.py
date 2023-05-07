@@ -1,4 +1,5 @@
 import os
+import re
 import pkg_resources
 import click
 
@@ -87,55 +88,46 @@ class JargonCli:
         procs = [file for file in self.__ls()]
         autocomp = ['/exit', '/ls', '/cat', '/edit', '/execute'] + procs
         jargon_completer = WordCompleter(autocomp, ignore_case=True)
+        pattern = re.compile(r'^/([a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*)(?:\s+(\S+))?')
+        user_input = start_input
 
         while True:
-            user_input = ""
-            if start_input:
-                user_input = start_input
-                start_input = None
-            else:
+            if not user_input:
                 user_input = Prompt('> ', 
                     history=FileHistory('history.txt'),
                     auto_suggest=AutoSuggestFromHistory(),
                     completer=jargon_completer,
                 ).strip()
-        
-            if user_input == '/exit':
-                return
+
+            m = pattern.match(user_input)
+            cmd, arg = m.group(1), m.group(2)
+            user_input = None
             
-            if user_input == '/ls':
+            if cmd == 'exit':
+                return
+                    
+            if cmd == 'ls':
                self.ls()
                continue
+            
+            if not arg and cmd in ['cat', 'execute', 'edit']:
+                print('you must specify an argument')
+                continue
 
-            if user_input.startswith('/cat'):
-                proc = user_input.split(' ')
-                if len(proc) < 2:
-                    print('you must specify a procedure')
-                else:
-                    self.cat(proc[1])
+            if cmd == 'cat':
+                self.cat(arg)
                 continue
             
-            if user_input.startswith('/execute'):
-                proc = user_input.split(' ')
-                if len(proc) < 2:
-                    print('you must specify a procedure')
-                else:
-                    proc = proc[1]
-                    self.__execute(proc)
+            if cmd == 'execute':
+                self.__execute(arg)
+                continue
+            
+            if cmd == 'edit':
+                click.edit(filename=self.__procpath(arg))
                 continue
 
-            if user_input.startswith('/'):
-                print('input:', user_input[1:])
-                self.__execute(user_input[1:])
-                continue
-
-            if user_input.startswith('/edit'):
-                proc = user_input.split(' ')
-                if len(proc) < 2:
-                    print('you must specify a procedure')
-                else:
-                    procpath = self.__procpath(proc[1])
-                    click.edit(filename=procpath)
+            if cmd:
+                self.__execute(cmd)
                 continue
                         
             result = self.conversation.predict(input=user_input)
