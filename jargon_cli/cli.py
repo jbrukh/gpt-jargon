@@ -30,7 +30,7 @@ class JargonCli:
     def __init__(self, jargon_dir=os.path.expanduser('~/.jargon'), model_name='gpt-4'):
         self.jargdir = jargon_dir
         self.__ensure_jargdir()
-        self.llm = ChatOpenAI(temperature=0, model_name=model_name)
+        self.llm = ChatOpenAI(temperature=.35, model_name=model_name)
         self.memory = ConversationBufferMemory(return_messages=True)
         self.jargon_spec = pkg_resources.resource_string(__name__, '../jargon.md').decode('utf-8').replace('{', '{{').replace('}', '}}')
         self.prompt = ChatPromptTemplate.from_messages([
@@ -81,18 +81,18 @@ class JargonCli:
         with open(procpath, 'r') as file:
             proctxt = file.read()
             print(proctxt, end='')
-            result = self.conversation.predict(input=f"Execute the following Jargon procedure and print only its output. If there is no output, print nothing:\n{proctxt}")
+            result = self.conversation.predict(input=f"Execute the following Jargon procedure only printing its output and wait for any input that is required: \n{proctxt}")
             print(result)
 
     def cli(self, start_input=None):
-        procs = [file for file in self.__ls()]
-        autocomp = ['/exit', '/ls', '/cat', '/edit', '/execute'] + procs
-        jargon_completer = WordCompleter(autocomp, ignore_case=True)
         pattern = re.compile(r'^/([a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*)(?:\s+(\S+))?')
         user_input = start_input
 
         while True:
             if not user_input:
+                procs = [file for file in self.__ls()]
+                autocomp = ['/exit', '/ls', '/cat', '/edit', '/execute', '/clear'] + procs
+                jargon_completer = WordCompleter(autocomp, ignore_case=True)
                 user_input = Prompt('> ', 
                     history=FileHistory('history.txt'),
                     auto_suggest=AutoSuggestFromHistory(),
@@ -109,6 +109,11 @@ class JargonCli:
                         
                 if cmd == 'ls':
                     self.ls()
+                    continue
+
+                if cmd == 'clear':
+                    self.memory.clear()
+                    print(self.memory.chat_memory)
                     continue
                 
                 if not arg and cmd in ['cat', 'execute', 'edit']:
