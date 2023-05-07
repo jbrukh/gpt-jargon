@@ -23,11 +23,8 @@ def ls(ctx):
 @click.pass_context
 def execute(ctx, proc):
     '''Execute a known procedure.'''
-    try:
-        ctx.obj.execute(proc)
-    except Exception as e:
-        click.echo(f"ERROR: {e}")
-
+    ctx.obj.execute(proc)
+    
 @click.command()
 @click.argument('jargfile')
 @click.pass_context
@@ -42,9 +39,16 @@ def edit(ctx, jargfile):
             file.write(f'+++ {jargfile[:-5]}\n\n+++')
     click.edit(filename=filepath)
 
+@click.command(name='cli')
+@click.pass_context
+def cmdline(ctx):
+    ctx.obj.cli()
+
+
 cli.add_command(ls)
 cli.add_command(execute)
 cli.add_command(edit)
+cli.add_command(cmdline)
 
 if __name__ == '__main__':
     cli()
