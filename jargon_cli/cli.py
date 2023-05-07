@@ -63,16 +63,16 @@ class JargonCli:
             proc += '.jarg'
         procpath = os.path.join(self.jargdir, proc)
         with open(procpath, 'r') as file:
-            print(file.read())        
+            print(file.read(), end='')        
 
     def execute(self, proc):
         self.cli(start_input=f'/execute {proc}')
     
-    def __procpath(self, proc):
+    def __procpath(self, proc, check_exists=True):
         if not proc.endswith('.jarg'):
             proc += '.jarg'
         procpath = os.path.join(self.jargdir, proc)
-        if not os.path.exists(procpath):
+        if check_exists and not os.path.exists(procpath):
             raise Exception(f'Unknown procedure: {procpath}')
         return procpath
         
@@ -81,7 +81,7 @@ class JargonCli:
         with open(procpath, 'r') as file:
             proctxt = file.read()
             print(proctxt, end='')
-            result = self.conversation.predict(input=f"Execute the following Jargon procedure and print only its output:\n{proctxt}")
+            result = self.conversation.predict(input=f"Execute the following Jargon procedure and print only its output. If there is no output, print nothing:\n{proctxt}")
             print(result)
 
     def cli(self, start_input=None):
@@ -100,35 +100,41 @@ class JargonCli:
                 ).strip()
 
             m = pattern.match(user_input)
-            cmd, arg = m.group(1), m.group(2)
-            user_input = None
-            
-            if cmd == 'exit':
-                return
-                    
-            if cmd == 'ls':
-               self.ls()
-               continue
-            
-            if not arg and cmd in ['cat', 'execute', 'edit']:
-                print('you must specify an argument')
-                continue
-
-            if cmd == 'cat':
-                self.cat(arg)
-                continue
-            
-            if cmd == 'execute':
-                self.__execute(arg)
-                continue
-            
-            if cmd == 'edit':
-                click.edit(filename=self.__procpath(arg))
-                continue
-
-            if cmd:
-                self.__execute(cmd)
-                continue
+            raw_input, user_input = user_input, None
+                
+            if m:
+                cmd, arg = m.group(1), m.group(2)
+                if cmd == 'exit':
+                    return
                         
-            result = self.conversation.predict(input=user_input)
+                if cmd == 'ls':
+                    self.ls()
+                    continue
+                
+                if not arg and cmd in ['cat', 'execute', 'edit']:
+                    print('you must specify an argument')
+                    continue
+
+                if cmd == 'cat':
+                    self.cat(arg)
+                    continue
+                
+                if cmd == 'execute':
+                    self.__execute(arg)
+                    continue
+                
+                if cmd == 'edit':
+                    click.edit(filename=self.__procpath(arg, check_exists=False))
+                    continue
+
+                if cmd:
+                    try:
+                        cmd = self.__procpath(cmd)
+                    except:
+                        print(f'unknown command or procedure: {cmd}')
+                        continue
+                    self.__execute(cmd)
+                    continue
+                        
+            result = self.conversation.predict(input=raw_input)
             print(result)
