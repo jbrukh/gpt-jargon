@@ -41,6 +41,7 @@ def edit(ctx, jargfile):
 @click.command(name='cli')
 @click.pass_context
 def cmdline(ctx):
+    '''Start the Jargon CLI with autocompletion.'''
     ctx.obj.cli()
 
 
