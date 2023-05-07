@@ -15,8 +15,7 @@ def cli(ctx, jargon_dir):
 @click.pass_context
 def ls(ctx):
     '''List available Jargon procedures.'''
-    for proc in ctx.obj.ls():
-        click.echo(f'* {proc}')
+    ctx.obj.ls()
 
 @click.command()
 @click.argument('proc')

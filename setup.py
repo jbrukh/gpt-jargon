@@ -9,6 +9,7 @@ setup(
         'langchain',
         'openai',
         'click',
+        'prompt_toolkit',
     ],
     entry_points={
         'console_scripts': [
