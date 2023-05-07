@@ -1,5 +1,6 @@
 import os
 import pkg_resources
+import click
 
 from langchain.prompts import (
     ChatPromptTemplate, 
@@ -66,9 +67,25 @@ class JargonCli:
     def execute(self, proc):
         self.cli(start_input=f'/execute {proc}')
     
+    def __procpath(self, proc):
+        if not proc.endswith('.jarg'):
+            proc += '.jarg'
+        procpath = os.path.join(self.jargdir, proc)
+        if not os.path.exists(procpath):
+            raise Exception(f'Unknown procedure: {procpath}')
+        return procpath
+        
+    def __execute(self, proc):
+        procpath = self.__procpath(proc)
+        with open(procpath, 'r') as file:
+            proctxt = file.read()
+            print(proctxt, end='')
+            result = self.conversation.predict(input=f"Execute the following Jargon procedure and print only its output:\n{proctxt}")
+            print(result)
+
     def cli(self, start_input=None):
         procs = [file for file in self.__ls()]
-        autocomp = ['/exit', '/ls', '/cat'] + procs
+        autocomp = ['/exit', '/ls', '/cat', '/edit', '/execute'] + procs
         jargon_completer = WordCompleter(autocomp, ignore_case=True)
 
         while True:
@@ -104,16 +121,21 @@ class JargonCli:
                     print('you must specify a procedure')
                 else:
                     proc = proc[1]
-                    if not proc.endswith('.jarg'):
-                        proc += '.jarg'
-                    procpath = os.path.join(self.jargdir, proc)
-                    if not os.path.exists(procpath):
-                        raise Exception(f'Unknown procedure: {procpath}')
-                    with open(procpath, 'r') as file:
-                        proctxt = file.read()
-                        print(proctxt)
-                        result = self.conversation.predict(input=f"Execute the following Jargon procedure and print only its output:\n{proctxt}")
-                        print(result)
+                    self.__execute(proc)
+                continue
+
+            if user_input.startswith('/'):
+                print('input:', user_input[1:])
+                self.__execute(user_input[1:])
+                continue
+
+            if user_input.startswith('/edit'):
+                proc = user_input.split(' ')
+                if len(proc) < 2:
+                    print('you must specify a procedure')
+                else:
+                    procpath = self.__procpath(proc[1])
+                    click.edit(filename=procpath)
                 continue
                         
             result = self.conversation.predict(input=user_input)
