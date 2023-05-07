@@ -24,13 +24,12 @@ class JargonCli:
         self.__ensure_jargdir()
 
     def __ensure_jargdir(self):
-        """
-        Creates `self.jargdir` if it doesn't already exist.
-        """
+        '''Creates `self.jargdir` if it doesn't already exist.'''
         if not os.path.exists(self.jargdir):
             os.makedirs(self.jargdir)
     
     def ls(self):
+        '''Yields all the .jarg files inside of the Jargon directory.'''
         for file in os.listdir(self.jargdir):
             if file.endswith(".jarg"):
                 yield file
@@ -44,12 +43,14 @@ class JargonCli:
         
         # read the Jargon spec
         jargon_prompt = pkg_resources.resource_string(__name__, '../jargon.md').decode('utf-8')
-        print(jargon_prompt)
+
+        # prompt template
         prompt = ChatPromptTemplate.from_messages([
             SystemMessagePromptTemplate(prompt=PromptTemplate(template=jargon_prompt.replace('{', '{{').replace('}', '}}'), input_variables=[])),
             MessagesPlaceholder(variable_name="history"),
             HumanMessagePromptTemplate.from_template("{input}")
         ])
+        # print(prompt)
 
         llm = ChatOpenAI(temperature=0, model_name='gpt-4')
         memory = ConversationBufferMemory(return_messages=True)
