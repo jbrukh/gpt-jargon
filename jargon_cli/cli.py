@@ -3,6 +3,7 @@ import re
 import pkg_resources
 import click
 
+from termcolor import colored
 from langchain.prompts import (
     ChatPromptTemplate, 
     MessagesPlaceholder, 
@@ -58,14 +59,17 @@ class JargonCli:
         for file in self.__ls():
             print('*', file)
 
+    def __cat(self, proc):
+        '''Return the contents of the given procedure.'''
+        with open(self.__procpath(proc), 'r') as file:
+            return file.read() 
+
     def cat(self, proc):
-        if not proc.endswith('.jarg'):
-            proc += '.jarg'
-        procpath = os.path.join(self.jargdir, proc)
-        with open(procpath, 'r') as file:
-            print(file.read(), end='')        
+        '''Print the contents of the given procedure.'''
+        print(self.__cat(proc), end='')         
 
     def execute(self, proc):
+        '''Start a cli, and execute the given procedure in the cli using /execute command.'''
         self.cli(start_input=f'/execute {proc}')
     
     def __procpath(self, proc, check_exists=True):
@@ -80,9 +84,9 @@ class JargonCli:
         procpath = self.__procpath(proc)
         with open(procpath, 'r') as file:
             proctxt = file.read()
-            print(proctxt, end='')
+            print(colored(proctxt, 'blue'), end='')
             result = self.conversation.predict(input=f"Execute the following Jargon procedure only printing its output and wait for any input that is required: \n{proctxt}")
-            print(result)
+            print(colored('jargon> ' + result, 'green'))
 
     def cli(self, start_input=None):
         pattern = re.compile(r'^/([a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*)(?:\s+(\S+))?')
@@ -93,7 +97,7 @@ class JargonCli:
                 procs = [file for file in self.__ls()]
                 autocomp = ['/exit', '/ls', '/cat', '/edit', '/execute', '/clear'] + procs
                 jargon_completer = WordCompleter(autocomp, ignore_case=True)
-                user_input = Prompt('> ', 
+                user_input = Prompt('user> ', 
                     history=FileHistory('history.txt'),
                     auto_suggest=AutoSuggestFromHistory(),
                     completer=jargon_completer,
@@ -112,6 +116,7 @@ class JargonCli:
                     continue
 
                 if cmd == 'clear':
+                    print(self.memory.chat_memory)
                     self.memory.clear()
                     print(self.memory.chat_memory)
                     continue
@@ -121,7 +126,10 @@ class JargonCli:
                     continue
 
                 if cmd == 'cat':
-                    self.cat(arg)
+                    contents = self.__cat(arg)
+                    self.memory.chat_memory.add_user_message(raw_input)     # adding the listing into memory, so Jargon can access it
+                    self.memory.chat_memory.add_ai_message(contents)
+                    print(contents)
                     continue
                 
                 if cmd == 'execute':
@@ -142,4 +150,4 @@ class JargonCli:
                     continue
                         
             result = self.conversation.predict(input=raw_input)
-            print(result)
+            print(colored('jargon> ' + result, 'green'))

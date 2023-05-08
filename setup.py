@@ -10,6 +10,7 @@ setup(
         'openai',
         'click',
         'prompt_toolkit',
+        'termcolor'
     ],
     entry_points={
         'console_scripts': [
