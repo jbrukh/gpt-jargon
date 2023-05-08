@@ -85,13 +85,13 @@ class JargonCli:
         with open(procpath, 'r') as file:
             proctxt = file.read()
             print(colored(proctxt, 'blue'), end='')
-            result = self.conversation.predict(input=f"Execute the following Jargon procedure only printing its output and wait for any input that is required: \n{proctxt}")
+            result = self.conversation.predict(input=f"Execute the following Jargon procedure only printing its output and wait for any input that is required. If the procedure has parameters, ask for the value of the parameters manually: \n{proctxt}")
             print(colored('jargon> ' + result, 'green'))
 
     def cli(self, start_input=None):
         pattern = re.compile(r'^/([a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*)(?:\s+(\S+))?')
         user_input = start_input
-        print('Commands: /exit, /ls, /cat <proc>, /edit <proc>, /execute <proc>, /clear')
+        print('Commands: /exit, /ls, /cat <proc>, /edit <proc>, /execute <proc> or /<proc>, /clear')
         while True:
             if not user_input:
                 procs = [file for file in self.__ls()]
@@ -116,9 +116,9 @@ class JargonCli:
                     continue
 
                 if cmd == 'clear':
-                    print(self.memory.chat_memory)
+                    # print(self.memory.chat_memory)
                     self.memory.clear()
-                    print(self.memory.chat_memory)
+                    # print(self.memory.chat_memory)
                     continue
                 
                 if not arg and cmd in ['cat', 'execute', 'edit']:
