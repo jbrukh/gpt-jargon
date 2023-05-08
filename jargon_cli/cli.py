@@ -91,7 +91,7 @@ class JargonCli:
     def cli(self, start_input=None):
         pattern = re.compile(r'^/([a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*)(?:\s+(\S+))?')
         user_input = start_input
-
+        print('Commands: /exit, /ls, /cat <proc>, /edit <proc>, /execute <proc>, /clear')
         while True:
             if not user_input:
                 procs = [file for file in self.__ls()]
