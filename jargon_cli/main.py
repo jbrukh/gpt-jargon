@@ -6,9 +6,10 @@ from .cli import JargonCli
 @click.group(invoke_without_command=True)
 @click.option('--jargon-dir', '-d', envvar='JARGON_DIR', default=os.path.expanduser('~/.jargon'), help="Manually set the Jargon directory.", type=str)
 @click.option('--model', '-m', envvar='JARGON_CLI_MODEL', default='gpt-4')
+@click.option('--temperature', '-t', default=0.35, type=float)
 @click.pass_context
-def cli(ctx, jargon_dir, model):
-    ctx.obj = JargonCli(jargon_dir=jargon_dir, model_name=model)
+def cli(ctx, jargon_dir, model, temperature):
+    ctx.obj = JargonCli(jargon_dir=jargon_dir, model_name=model, temperature=temperature)
     if ctx.invoked_subcommand is None:
         click.echo(ctx.get_help())
 

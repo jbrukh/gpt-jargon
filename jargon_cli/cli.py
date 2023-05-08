@@ -28,10 +28,10 @@ from prompt_toolkit.completion.word_completer import WordCompleter
 
 class JargonCli:
 
-    def __init__(self, jargon_dir=os.path.expanduser('~/.jargon'), model_name='gpt-4'):
+    def __init__(self, jargon_dir=os.path.expanduser('~/.jargon'), model_name='gpt-4', temperature=0.35):
         self.jargdir = jargon_dir
         self.__ensure_jargdir()
-        self.llm = ChatOpenAI(temperature=.35, model_name=model_name)
+        self.llm = ChatOpenAI(temperature=temperature, model_name=model_name)
         self.memory = ConversationBufferMemory(return_messages=True)
         self.jargon_spec = pkg_resources.resource_string(__name__, '../jargon.md').decode('utf-8').replace('{', '{{').replace('}', '}}')
         self.prompt = ChatPromptTemplate.from_messages([
