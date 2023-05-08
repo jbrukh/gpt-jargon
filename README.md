@@ -6,6 +6,7 @@ Jargon is a natural language, informally specified, intelligently interpreted, r
 
   * [Jargon: a LLM-based pseudolanguage for prompt engineering](https://mirror.xyz/dashboard/edit/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
   * [New features in Jargon v0.0.12](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE)
+  * [Using Jargon CLI in Jargon v0.2.0](https://jake.mirror.xyz/y_bo5z1toEhC8G8aK1wpQzU6Tign7_s_Upsm12ietRc)
 
 As of this release, Jargon comes with `jargon_cli`, a commandline shell for playing with Jargon programs that works with OpenAI.
 
