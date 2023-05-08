@@ -2,9 +2,12 @@
 
 ## tl;dr
 
-Jargon is a natural language, informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented LLM-based pseudolanguage for prompt engineering, currently running on GPT-4. See the original article on Jargon here:
+Jargon is a natural language, informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented LLM-based pseudolanguage for prompt engineering, currently running on GPT-4. See the original articles on Jargon here:
 
   * [Jargon: a LLM-based pseudolanguage for prompt engineering](https://mirror.xyz/dashboard/edit/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
+  * [New features in Jargon v0.0.12](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE)
+
+As of this release, Jargon comes with `jargon_cli`, a commandline shell for playing with Jargon programs that works with OpenAI.
 
 ## What is it, functionally?
 
@@ -62,11 +65,15 @@ At the prompt, you can enter your Jargon procedure and it will be executed. You 
     - /debug turn on debugging, which will display the line of the PROCEDURE it is executing BEFORE showing the rest of the output.
     - /audit will print a procedures code with line numbers.
 
-### Running Jargon using `jargon-cli`
+### Running Jargon using `jargon_cli`
 
-Install `jargon-cli` by writing:
+Install `jargon_cli` by executing the following inside of the repo:
 
     $ pip install .
+
+You will need to make sure your `OPENAI_API_KEY` is set for the cli to be able to access an LLM interpreter. The default model is `gpt-4`, but you can specify others:
+
+    $ jargon --model gpt-3.5-turbo cli
 
 Run the tool:
 
@@ -85,6 +92,17 @@ To execute a procedure:
     $ jargon execute nomic
 
 This will give you a command line interface to the Jargon-executing LLM.
+
+You can also do all of this stuff directly from a cli:
+
+    $ jargon cli
+    Commands: /exit, /ls, /cat <proc>, /edit <proc>, /execute <proc> or /<proc>, /clear
+    > /ls
+    > /edit test.jarg
+    > /cat test.jarg
+    > /execute test.jarg
+    > /clear
+    > /exit
 
 ## Unit Testing
 
