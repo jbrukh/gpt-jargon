@@ -33,7 +33,7 @@ class JargonCli:
         self.__ensure_jargdir()
         self.llm = ChatOpenAI(temperature=temperature, model_name=model_name)
         self.memory = ConversationBufferMemory(return_messages=True)
-        self.jargon_spec = pkg_resources.resource_string(__name__, '../jargon.md').decode('utf-8').replace('{', '{{').replace('}', '}}')
+        self.jargon_spec = pkg_resources.resource_string(__name__, 'jargon.md').decode('utf-8').replace('{', '{{').replace('}', '}}')
         self.prompt = ChatPromptTemplate.from_messages([
             SystemMessage(content=self.jargon_spec),
             MessagesPlaceholder(variable_name="history"),

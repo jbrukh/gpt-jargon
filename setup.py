@@ -12,6 +12,7 @@ setup(
         'prompt_toolkit',
         'termcolor'
     ],
+    package_data={'jargon_cli': ['jargon.md']},
     entry_points={
         'console_scripts': [
             'jargon = jargon_cli.main:cli',
