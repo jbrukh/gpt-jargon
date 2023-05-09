@@ -72,6 +72,10 @@ class JargonCli:
         '''Start a cli, and execute the given procedure in the cli using /execute command.'''
         self.cli(start_input=f'/execute {proc}')
     
+    def edit(self, proc):
+        '''Start a cli, and edit the given procedure using the /edit command.'''
+        self.cli(start_input=f'/edit {proc}')
+    
     def __procpath(self, proc, check_exists=True):
         if not proc.endswith('.jarg'):
             proc += '.jarg'

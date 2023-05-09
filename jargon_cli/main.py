@@ -27,18 +27,11 @@ def execute(ctx, proc):
     ctx.obj.execute(proc)
     
 @click.command()
-@click.argument('jargfile')
+@click.argument('proc')
 @click.pass_context
-def edit(ctx, jargfile):
-    '''Edit or create a procedure.'''
-    jargdir = ctx.obj.jargdir
-    if not jargfile.endswith('.jarg'):
-        jargfile += '.jarg'
-    filepath = os.path.join(jargdir, jargfile)
-    if not os.path.exists(filepath):
-        with open(filepath, 'w') as file:
-            file.write(f'+++ {jargfile[:-5]}\n\n+++')
-    click.edit(filename=filepath)
+def edit(ctx, proc):
+    '''Edit a Jargon procedure and go to the CLI.'''
+    ctx.obj.edit(proc)
 
 @click.command(name='cli')
 @click.pass_context
