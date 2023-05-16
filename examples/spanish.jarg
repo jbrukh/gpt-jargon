@@ -14,7 +14,9 @@
     /wait $answer      # make sure my answer is in Spanish
     @if [my Spanish answer contains grammatical errors]:
       /output "Correction: ", [a corrected version of $answer]
-      /output "Explanation: ", [an explanation of why $answer was incorrect]
+      @foreach [grammatical, spelling, or punctuation $mistake]:
+        /output "Explanation: ", [an explanation of why $mistake was incorrect]
+      @endfor
       -- Ask me to input the correct version of the response.
       /goto @response
     @else:
