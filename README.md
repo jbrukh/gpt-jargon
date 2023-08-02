@@ -4,7 +4,7 @@
 
 Jargon is a natural language, informally specified, intelligently interpreted, referentially omnipotent, and flow control oriented LLM-based pseudolanguage for prompt engineering, currently running on GPT-4. See the original articles on Jargon here:
 
-  * [Jargon: a LLM-based pseudolanguage for prompt engineering](https://mirror.xyz/dashboard/edit/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
+  * [Jargon: a LLM-based pseudolanguage for prompt engineering](https://jake.mirror.xyz/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44).
   * [New features in Jargon v0.0.12](https://jake.mirror.xyz/6j-KetfRE4kQRyI2-Xf2JsP4UL-DPKi20WhOVbWT2dE)
   * [Using Jargon CLI in Jargon v0.2.0](https://jake.mirror.xyz/y_bo5z1toEhC8G8aK1wpQzU6Tign7_s_Upsm12ietRc)
 
